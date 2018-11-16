@@ -1,24 +1,28 @@
 import * as React from 'react';
-import { Router, Route } from 'react-router';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Layout } from 'antd';
+const {Content } = Layout;
 import './App.scss';
+import verify from './pages/verify'
 
-import logo from './logo.svg';
+
 
 
 class App extends React.Component {
     public render() {
         return (
             <div className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h2>Welcome to React</h2>
-                </div>
                 <Router>
-                    <Route path="/verify" component={verify}>
-                    </Route>
+                    <Layout >
+                        <Route path="/verify" component={verify} />
+                    </Layout>
+                    <Layout>
+                        <Content className="Verify-container">
+                            <Route path="/verify" component={verify} />
+                        </Content>
+                    </Layout>
                 </Router>
             </div>)
-    );
     }
 }
 
