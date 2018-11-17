@@ -59,7 +59,7 @@ const getParentKey = (key, tree) => {
   return parentKey;
 };
 
-class SearchTree extends React.Component {
+export default class SearchTree extends React.Component {
   state = {
     expandedKeys: [],
     searchValue: '',
@@ -124,5 +124,3 @@ class SearchTree extends React.Component {
     );
   }
 }
-
-ReactDOM.render(<SearchTree />, mountNode);

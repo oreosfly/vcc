@@ -1,26 +1,47 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Layout } from 'antd';
-const {Content } = Layout;
+const { Content,Sider } = Layout;
 import './App.scss';
-import verify from './pages/verify'
+import Verify from './pages/verify';
+import Meta from './pages/editor/meta';
+import Editor from './pages/editor/editor';
 
 
+class Layout1 extends React.Component {
+    public render() {
+        return (
+            <Layout>
+                <Content className="Verify-container">
+                    {this.props.children}
+                </Content>
+            </Layout>)
+    }
+}
 
+class Layout2 extends React.Component {
+    public render() {
+        return (
+            <Layout>
+                <Sider><Meta /></Sider>
+                <Content className="Verify-container">
+                    {this.props.children}
+                </Content>
+            </Layout>)
+    }
+}
 
 class App extends React.Component {
     public render() {
         return (
             <div className="App">
                 <Router>
-                    <Layout >
-                        <Route path="/verify" component={verify} />
-                    </Layout>
-                    <Layout>
-                        <Content className="Verify-container">
-                            <Route path="/verify" component={verify} />
-                        </Content>
-                    </Layout>
+                        <Route  component={Layout1} >
+                        <Route path="/verify" component={Verify}></Route>
+                        </Route>
+                        <Route  component={Layout2} >
+                        <Route path="/editor" component={Editor}></Route>
+                        </Route>
                 </Router>
             </div>)
     }
