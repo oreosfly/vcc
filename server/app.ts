@@ -29,5 +29,6 @@ client.connect((err:Error|null) =>{
   });
 App.listen(port,host);
 App.addListener('error',()=>{
+    
     client.close();
 })
