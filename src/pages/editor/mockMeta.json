@@ -1,0 +1,22 @@
+[
+    {
+        "children": [{"name":"nodeconfir","key":"ffffffffff"}],
+        "name": "dir1",
+        "key": "objecttttttttttttt1"
+    },
+    {
+        "children": [],
+        "name": "dir2",
+        "key": "objecttttttttttttt2"
+    },
+    {
+        "children": [],
+        "name": "dir3",
+        "key": "objecttttttttttttt3"
+    },
+    {
+        "children": [],
+        "name": "dir4",
+        "key": "objecttttttttttttt4"
+    }
+]

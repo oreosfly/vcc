@@ -1,0 +1,7 @@
+{
+    "mailServer":{
+
+    },
+    "jwtSalt":"",
+    "dbStr":""
+}
