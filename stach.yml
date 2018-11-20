@@ -1,0 +1,15 @@
+# Use root/example as user/password credentials
+version: '0.0.1'
+
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 9011:27017
+    volumes:
+      - "~/dokerData/data/db:/data/db"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
