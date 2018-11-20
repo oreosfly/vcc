@@ -55,4 +55,3 @@ export default function (opt: validateOpt) {
     return validate;
 }
 
-

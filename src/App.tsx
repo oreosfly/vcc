@@ -4,15 +4,22 @@ import './App.scss';
 import Layout1 from './Layout1';
 import Layout2 from './Layout2';
 
+import { createBrowserHistory } from 'history';
+
+export const history = createBrowserHistory();
+
+class Vrouter extends Router {
+  history:any;
+}
 class App extends React.Component {
     public render() {
         return (
-            <Router>
+            <Vrouter>
                 <div className="App">
                     <Route component={Layout2} path={['/editor']}/>
                     <Route component={Layout1} path={['/verify']} />
                 </div>
-            </Router>)
+            </Vrouter>)
     }
 }
 
