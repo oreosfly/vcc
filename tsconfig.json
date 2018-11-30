@@ -19,7 +19,10 @@
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+        "services":["./services"]
+    }
   },
   "exclude": [
     "node_modules",

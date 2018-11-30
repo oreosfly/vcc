@@ -5,11 +5,24 @@ let client = axios.create({
     baseURL: "/Bapi/v1",
     timeout: 2000,
     headers: { 'Content-Type': 'application/json' },
+    // adapter: function (config) {
+    //     /* ... */
+    //   },
+    validateStatus: function (status) {
+        return true; // 默认的
+      },
     transformResponse: [function (data) {
-        const d = JSON.parse(data);
-        if(d.code===-1){
-            history.push('/verify')
+        console.log(data)
+        try{
+            const d = JSON.parse(data);
+            if(d.code===-1){
+                history.push('/verify')
+            };
+        }catch(e){
+
         }
+
+        return {code:0}
     }]
 });
 
@@ -24,6 +37,11 @@ export const getJWT = async () => {
     })
 };
 
+export async function sendMail({emailAddr}:{emailAddr:string}){
+    return client.get('/sendMail',{
+        params:{emailAddr}
+    })
+}
 export async function getMetaInfo() {
     return client.get('/metaInfo')
 }
