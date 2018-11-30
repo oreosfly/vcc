@@ -1,11 +1,13 @@
 import { IMiddleware } from "koa-router";
 import jwt from 'jsonwebtoken';
 import config from '../config';
-interface validateOpt {
+
+declare type test=  (name:string)=>boolean;
+interface ValidateOpt {
     // include:RegExp|Function,
-    exclude: RegExp | Function
+    exclude: RegExp | test;
 }
-function test(str: string, assert: RegExp | Function | undefined): boolean {
+function test(str: string, assert: RegExp | test | undefined): boolean {
     if (assert === undefined) {
         return true;
     }
@@ -15,8 +17,8 @@ function test(str: string, assert: RegExp | Function | undefined): boolean {
         return assert(str)
     }
 }
-export default function (opt: validateOpt) {
-    const validate: IMiddleware = async function (ctx, next) {
+export default function (opt: ValidateOpt) {
+    const validate: IMiddleware = async  (ctx, next)=> {
         if (test(ctx.path, opt.exclude)) {
             return await next();
         }

@@ -9,7 +9,7 @@ import { createBrowserHistory } from 'history';
 export const history = createBrowserHistory();
 
 class Vrouter extends Router {
-  history:any;
+  public history:any;
 }
 class App extends React.Component {
     public render() {

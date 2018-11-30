@@ -28,10 +28,10 @@ const client = new mongo.MongoClient(config.dbStr);
 
 client.connect((err: Error | null) => {
     assert.equal(null, err);
-    console.log('connect db successfullllll');
+    // console.log('connect db successfullllll');
     App.listen(config.port, config.host);
     App.context.db = client.db(config.dbName)
-    console.log('start app successfulllllll')
+    // console.log('start app successfulllllll')
 });
 
 App.addListener('error', () => {

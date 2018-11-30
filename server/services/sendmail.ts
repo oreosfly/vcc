@@ -1,4 +1,4 @@
-const email = require("emailjs");
+const email=require("emailjs");
 const server = email.server.connect({
     user: "username",
     password: "password",

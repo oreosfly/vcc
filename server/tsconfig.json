@@ -7,9 +7,8 @@
     "lib": ["es6", "dom"],
     "sourceMap": true,
     "allowJs": true,
-    "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "src",
+    "rootDir": "../server",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -21,6 +20,7 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true
   },
+  "include": ["./**/*.ts"],
   "exclude": [
     "node_modules",
     "build",
@@ -29,6 +29,5 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "server"
   ]
 }

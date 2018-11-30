@@ -1,0 +1,32 @@
+.email-container {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    .email-input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .btn-send {
+        height: 97%;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
+.token-container {
+    margin-top: 18px;
+    height: 40px;
+    button {
+        height: 100%;
+    }
+}
+
+.login-btn {
+    margin-top: 18px;
+    height: 40px;
+    text-align: center;
+}
+
+.ant-input-group-addon {
+    border-radius: 0 !important;
+}

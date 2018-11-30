@@ -26,11 +26,11 @@ export default class SearchTree extends React.Component {
                     </TreeNode>
                 );
             }
-            return <TreeNode key={item.key} title={item.name} />;
+            return <TreeNode key={item.key} title={item.name} isLeaf={true} />;
         });
         return (
             <div>
-                <Tree>
+                <Tree showLine={true}>
                     {loop(metajson)}
                 </Tree>
             </div>
