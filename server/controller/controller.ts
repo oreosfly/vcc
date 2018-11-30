@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import config from '../config.json';
+import config from '../config';
 import send from '../services/sendmail'
 
 export async function getJWT({ email }: { email: string }) {
