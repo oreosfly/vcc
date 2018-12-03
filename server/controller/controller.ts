@@ -1,14 +1,25 @@
 import jwt from 'jsonwebtoken';
 import config from '../config';
-import send from '../services/sendmail'
+import send from '../services/sendmail';
+import { IMiddleware } from "koa-router";
 
-export async function getJWT({ email }: { email: string }) {
+export const getJWT: IMiddleware = async function (ctx, next) {
+    const emailAddr = ctx.body.emailAddr;
+
     const token = jwt.sign({
-        email
+        emailAddr
     }, config.jwtSalt, {
             expiresIn: 30 * 60
         });
     // db.save(token)
-    await send({ text: token })
-    return token;
+    try {
+        await send(token, emailAddr)
+    } catch (e) {
+
+    }
+
+}
+
+export const getMeta: IMiddleware = async function (ctx, next) {
+
 }

@@ -47,7 +47,7 @@ export default class Verify extends React.Component<any, IState> {
         )
     }
     private async sendMail() {
-        if (this.state.sendStatus !== SENDSTATUS.no_send && !this.state.emailAddr) {
+        if (this.state.sendStatus !== SENDSTATUS.no_send || !this.state.emailAddr) {
             return;
         }
         this.setState({ sendStatus: SENDSTATUS.sending });
