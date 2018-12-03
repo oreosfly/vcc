@@ -1,10 +1,11 @@
 import Koa from 'koa';
-import Router from 'koa-router';
 import BodyParser from 'koa-bodyparser';
 import mongo from 'mongodb';
 import assert from 'assert';
 import config from './config';
 import validate from './middlewares/validate';
+import {reponseBody} from 'middlewares/reponseBody';
+import router from './router';
 
 declare module 'koa' {
     interface BaseContext {
@@ -12,14 +13,12 @@ declare module 'koa' {
         db: mongo.Db | null;
     }
 }
+
 const App = new Koa();
-const router = new Router({
-    prefix: "/Bapi/v1/"
-})
-router.get('/meta')
-router.post('/meta')
-router.get('/entity')
-router.post('/entity')
+
+
+
+App.use(reponseBody())
 App.use(router.routes())
 App.use(BodyParser({}));
 App.use(validate({ exclude: /(^api)|(verify)/ }))
@@ -34,6 +33,7 @@ client.connect((err: Error | null) => {
     // console.log('start app successfulllllll')
 });
 
-App.addListener('error', () => {
+App.addListener('error', (e) => {
+    console.log(e)
     client.close();
 })
