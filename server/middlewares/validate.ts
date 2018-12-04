@@ -2,7 +2,7 @@ import { IMiddleware } from "koa-router";
 import jwt from 'jsonwebtoken';
 import config from '../config';
 
-declare type test=  (name:string)=>boolean;
+declare type test = (name: string) => boolean;
 interface ValidateOpt {
     // include:RegExp|Function,
     exclude: RegExp | test;
@@ -18,18 +18,17 @@ function test(str: string, assert: RegExp | test | undefined): boolean {
     }
 }
 export default function (opt: ValidateOpt) {
-    const validate: IMiddleware = async  (ctx, next)=> {
+    const validate: IMiddleware = async (ctx, next) => {
         if (test(ctx.path, opt.exclude)) {
             return await next();
         }
         const token = ctx.headers['vite-token'];
         if (!token) {
-            ctx.body = {
+            throw new catchAbleError({
                 code: -1,
-                msg: 'no token',
-                data: null
-            }
-            return await next();
+                data: "token不存在",
+                tip: "toast"
+            })
         }
         try {
             await new Promise(
@@ -44,13 +43,12 @@ export default function (opt: ValidateOpt) {
                 }
             )
         } catch (e) {
-            ctx.body = {
+            throw new catchAbleError({
                 code: -1,
-                msg: JSON.stringify(e),
-                data: null
-            }
+                data: "token校验失败",
+                tip: "toast"
+            })
         }
-
         ctx.token = token;
         await next();
     }

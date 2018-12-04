@@ -12,14 +12,12 @@ declare module 'koa' {
         db: mongo.Db | null;
     }
 }
+
 const App = new Koa();
-const router = new Router({
-    prefix: "/Bapi/v1/"
-})
-router.get('/meta')
-router.post('/meta')
-router.get('/entity')
-router.post('/entity')
+
+
+
+App.use(reponseBody())
 App.use(router.routes())
 App.use(BodyParser({}));
 App.use(validate({ exclude: /(^api)|(verify)/ }))
