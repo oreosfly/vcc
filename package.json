@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/axios": "^0.14.0",
+    "@types/bluebird": "^3.5.24",
     "@types/jsonwebtoken": "^8.3.0",
     "@types/koa": "^2.0.46",
     "@types/koa-bodyparser": "^5.0.1",
@@ -13,6 +14,7 @@
     "@types/react-router-dom": "^4.3.1",
     "antd": "^3.10.7",
     "axios": "^0.18.0",
+    "bluebird": "^3.5.3",
     "emailjs": "^2.2.0",
     "jsonwebtoken": "^8.4.0",
     "koa": "^2.6.2",
@@ -27,12 +29,12 @@
     "ts-node": "^7.0.1"
   },
   "scripts": {
-    "start": "react-scripts-ts-antd start",
+    "dev": "react-scripts-ts-antd start",
     "build": "react-scripts-ts-antd build",
     "test": "react-scripts-ts-antd test --env=jsdom",
     "eject": "react-scripts-ts-antd eject",
-    "start:server":"ts-node ./server/app.ts",
-    "build:server":""
+    "dev:server": "cd server &&ts-node ./app.ts",
+    "build:server": ""
   },
   "devDependencies": {
     "@types/jest": "^23.3.9",

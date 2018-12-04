@@ -1,10 +1,10 @@
-import Koa from 'koa';
-import Router from 'koa-router';
-import BodyParser from 'koa-bodyparser';
-import mongo from 'mongodb';
-import assert from 'assert';
+import * as Koa from 'koa';
+import * as Router from 'koa-router';
+import * as BodyParser from 'koa-bodyparser';
+import * as mongo from 'mongodb';
 import config from './config';
 import validate from './middlewares/validate';
+import {getDb} from './initDb';
 
 declare module 'koa' {
     interface BaseContext {
@@ -24,16 +24,9 @@ App.use(router.routes())
 App.use(BodyParser({}));
 App.use(validate({ exclude: /(^api)|(verify)/ }))
 
-const client = new mongo.MongoClient(config.dbStr);
 
-client.connect((err: Error | null) => {
-    assert.equal(null, err);
-    // console.log('connect db successfullllll');
-    App.listen(config.port, config.host);
-    App.context.db = client.db(config.dbName)
-    // console.log('start app successfulllllll')
-});
-
-App.addListener('error', () => {
-    client.close();
+App.listen(config.port, config.host);
+getDb()
+App.addListener('error', (e) => {
+    console.error(e)
 })
