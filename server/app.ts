@@ -1,10 +1,10 @@
 import * as Koa from 'koa';
-import * as Router from 'koa-router';
 import * as BodyParser from 'koa-bodyparser';
 import * as mongo from 'mongodb';
 import config from './config';
 import validate from './middlewares/validate';
 import {getDb} from './initDb';
+import {router} from './router';
 
 declare module 'koa' {
     interface BaseContext {
