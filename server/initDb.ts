@@ -1,21 +1,14 @@
 import * as assert from 'assert';
 import config from './config';
 import * as mongo from 'mongodb';
+mongo.MongoClient
 
 const client = new mongo.MongoClient(config.dbStr);
-let db: mongo.Db | null = null;
-export async function getDb() {
+let db: mongo.Db;
+export async function getDb(): Promise<mongo.Db> {
     if (db) {
         return Promise.resolve(db)
     }
-    new Promise((res, rej) => {
-        client.connect((err: Error | null) => {
-            assert.equal(null, err);
-            // console.log('conect db successfullllll');
-            db = client.db(config.dbName)
-            res(db as mongo.Db);
-            // console.log('start app successfulllllll')
-        });
-    })
-
+    await client.connect();
+    return await client.db(config.dbName);
 }
