@@ -30,11 +30,15 @@
     "ts-node": "^7.0.1"
   },
   "scripts": {
-    "start": "react-scripts-ts-antd start",
+    "dev": "react-scripts-ts-antd start",
     "build": "react-scripts-ts-antd build",
     "test": "react-scripts-ts-antd test --env=jsdom",
     "eject": "react-scripts-ts-antd eject",
+<<<<<<< HEAD
     "start:server": "ts-node ./server/app.ts",
+=======
+    "dev:server": "cd server &&ts-node ./app.ts",
+>>>>>>> 1358809e82bc9b4a5954dda1d0ba618561850a77
     "build:server": ""
   },
   "devDependencies": {
@@ -42,6 +46,9 @@
     "@types/node": "^10.12.7",
     "@types/react": "^16.7.6",
     "@types/react-dom": "^16.0.9",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "@types/axios": "^0.14.0",
+    "@types/react-router": "^4.4.1",
+    "@types/react-router-dom": "^4.3.1"
   }
 }

@@ -1,7 +1,7 @@
 const email = require("emailjs");
 const server = email.server.connect({
     user: "yuanzhang",
-    password: "Yz1587567@hurry",
+    password: ".....sdafsd",
     host: "smtp.exmail.qq.com",
     ssl: true,//465,
     port: 465
